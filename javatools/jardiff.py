@@ -245,9 +245,10 @@ class JarSignatureBlockFileChange(JarContentChange):
 
     def collect_impl(self):
         if self.is_change():
-            with self.open_left() as lfd, self.open_right() as rfd:
-                lsig = lfd.read()
-                rsig = rfd.read()
+            with self.open_left() as lfd:
+                with self.open_right() as rfd:
+                    lsig = lfd.read()
+                    rsig = rfd.read()
             yield SignatureBlockFileChange(lsig, rsig)
 
 
