@@ -31,7 +31,10 @@ import os
 import sys
 
 from base64 import b64encode
-from collections import OrderedDict
+try:
+    from collections import OrderedDict
+except ImportError:
+    from odict import odict as OrderedDict		# Python 2.6
 from cStringIO import StringIO
 from itertools import izip
 from os.path import isdir, join, sep, split, walk

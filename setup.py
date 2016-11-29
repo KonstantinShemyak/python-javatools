@@ -32,6 +32,12 @@ except ImportError:
 
 from extras import pylint_cmd, cheetah_build_py_cmd
 
+install_requires = [ "Cheetah", "M2Crypto" ]
+
+try:
+    from collections import OrderedDict		# Python 2.7
+except ImportError:
+    install_requires.append("odict")		# Python 2.6
 
 setup(name = "javatools",
       version = "1.4.0",
@@ -64,8 +70,7 @@ setup(name = "javatools",
       " class files and JARs",
 
       provides = [ "javatools" ],
-      install_requires = [ "Cheetah",
-                           "M2Crypto" ],
+      install_requires = install_requires,
       setup_requires = [ "Cheetah" ],
       platforms = [ "python2 >= 2.6" ],
 
