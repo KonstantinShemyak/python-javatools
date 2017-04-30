@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/KonstantinShemyak/python-javatools.svg?branch=ci)](https://travis-ci.org/KonstantinShemyak/python-javatools)
+[![Coverage Status](https://coveralls.io/repos/github/KonstantinShemyak/python-javatools/badge.svg?branch=ci)](https://coveralls.io/github/KonstantinShemyak/python-javatools?branch=ci)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/354562fd479a449f9177c9d15ba3135d)](https://www.codacy.com/app/KonstantinShemyak/python-javatools?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=KonstantinShemyak/python-javatools&amp;utm_campaign=Badge_Grade)
+[![Maintainability](https://api.codeclimate.com/v1/badges/588f8a83612e66af7f49/maintainability)](https://codeclimate.com/github/KonstantinShemyak/python-javatools/maintainability)
 
 # Overview of python-javatools
 

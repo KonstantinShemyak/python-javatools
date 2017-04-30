@@ -1,18 +1,41 @@
-
 language: python
 
-script: python setup.py test
+# Python is not available on OSX workers at travis-ci :(
+# https://github.com/travis-ci/travis-ci/issues/2312
+#os:
+#    - linux
+#    - osx
 
 python:
-  - "2.7"
-  - "3.5"
-  - "3.6"
+    - 2.7
+    - 3.6
 
-# needs this for travis to support 3.7
-# matrix:
-#  include:
-#    - python: 3.7
-#      dist: xenial
-#      sudo: true
+# before_install:
+#    - sudo apt-get -qq update
+#    - sudo apt-get install -y openssl
 
-# The end.
+env:
+  global:
+    - CC_TEST_REPORTER_ID=0d4645808fada0db3562cafb9f7dc748f3807c1c83a9b4ed99053cc2a3ab51e1
+
+# Instructions for Coveralls:
+# https://github.com/audreyr/how-to/blob/master/python/use_coverage_with_unittest.rst
+
+install: 
+    - pip install coveralls
+    - pip install cheetah3
+    - python setup.py install
+    # CodeClimate:
+    - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+    - chmod +x ./cc-test-reporter
+
+before_srcipt:
+    - ./cc-test-reporter before-build
+
+script:
+    - coverage run --source javatools setup.py test
+    - coverage xml
+
+after_success:
+    - coveralls
+    - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
